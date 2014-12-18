@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="SpringMVCJPAWebService:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="SpringMVCJPAWebService.war">
+      <element id="artifact" artifact-name="SpringMVCJPAWebService:war exploded" />
+    </root>
+  </artifact>
+</component>

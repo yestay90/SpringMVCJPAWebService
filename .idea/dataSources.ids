@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="MySQL - javadb@localhost" uuid="addef973-0136-4d51-b01a-0fcaf23f8994">
+    <database-info product="MySQL" version="5.6.21" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.31 ( Revision: alexander.soklakov@oracle.com-20140520065950-groqzzbvxprqdmnz )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <schema name="" catalog="javadb"/>
+    <table name="CONTACT" schema="" catalog="javadb" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="FIRST_NAME" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12"/>
+      <column name="LAST_NAME" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="BIRTH_DATE" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="VERSION" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="ID"/>
+      <exported-key name="FK_CONTACT_HOBBY_DETAIL_1" table="CONTACT_HOBBY_DETAIL" schema="" catalog="javadb" columns="CONTACT_ID"/>
+      <exported-key name="FK_CONTACT_TEL_DETAIL_1" table="CONTACT_TEL_DETAIL" schema="" catalog="javadb" columns="CONTACT_ID"/>
+      <index name="UQ_CONTACT_1" unique="true" columns="FIRST_NAME,LAST_NAME"/>
+    </table>
+    <table name="CONTACT_HOBBY_DETAIL" schema="" catalog="javadb" type="TABLE">
+      <column name="CONTACT_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="HOBBY_ID" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="CONTACT_ID,HOBBY_ID"/>
+      <foreign-key name="FK_CONTACT_HOBBY_DETAIL_1" columns="CONTACT_ID" ref-table="CONTACT" ref-schema="" ref-catalog="javadb" ref-columns="ID" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_CONTACT_HOBBY_DETAIL_2" columns="HOBBY_ID" ref-table="HOBBY" ref-schema="" ref-catalog="javadb" ref-columns="HOBBY_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_CONTACT_HOBBY_DETAIL_2" unique="false" columns="HOBBY_ID"/>
+    </table>
+    <table name="CONTACT_TEL_DETAIL" schema="" catalog="javadb" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="CONTACT_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="TEL_TYPE" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TEL_NUMBER" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="VERSION" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="ID"/>
+      <foreign-key name="FK_CONTACT_TEL_DETAIL_1" columns="CONTACT_ID" ref-table="CONTACT" ref-schema="" ref-catalog="javadb" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="UQ_CONTACT_TEL_DETAIL_1" unique="true" columns="CONTACT_ID,TEL_TYPE"/>
+    </table>
+    <table name="HOBBY" schema="" catalog="javadb" type="TABLE">
+      <column name="HOBBY_ID" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="HOBBY_ID"/>
+      <exported-key name="FK_CONTACT_HOBBY_DETAIL_2" table="CONTACT_HOBBY_DETAIL" schema="" catalog="javadb" columns="HOBBY_ID"/>
+    </table>
+    <table name="users" schema="" catalog="javadb" type="TABLE">
+      <column name="UserID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="UserPassword" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LastName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FirstName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="UserID"/>
+    </table>
+  </data-source>
+</component>
